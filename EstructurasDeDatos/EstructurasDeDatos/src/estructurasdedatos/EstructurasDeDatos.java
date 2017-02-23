@@ -6,6 +6,7 @@
 package estructurasdedatos;
 
 import estructurasdedatos.estructuraobjeto.Persona;
+import estructurasdedatos.estructuraobjeto.Vehiculo;
 
 /**
  *
@@ -17,7 +18,11 @@ public class EstructurasDeDatos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        
+        //--Clase Persona
+        
+        System.out.println("----Clase Persona-----");
+        
         Persona estudiante = new Persona();
 
         //--Ingresar valores
@@ -37,6 +42,30 @@ public class EstructurasDeDatos {
         
       
         System.out.println("Soltero: " + estudiante.isSoltero());
+        
+        
+        
+        //--Clase Vehiculo
+        
+        System.out.println("----Clase Vehiculo-----");
+        
+        Vehiculo automovil = new Vehiculo();
+        
+        //--Ingresar valores
+        automovil.setColor("Rojo");
+        automovil.setModelo("2001");
+        automovil.setNumeroSoat("98203871623874");
+        automovil.setPlaca("ASG123");
+        
+        //--Mostras información
+        
+        System.out.println("Color vehículo: " + automovil.getColor());
+        System.out.println("Modelo vehículo: " + automovil.getModelo());
+        System.out.println("Número de Soat: " + automovil.getNumeroSoat());
+        System.out.println("Placa: : " + automovil.getPlaca());
+        
     }
+    
+
 
 }
