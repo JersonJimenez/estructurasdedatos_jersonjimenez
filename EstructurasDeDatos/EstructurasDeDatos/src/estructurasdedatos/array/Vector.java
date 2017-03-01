@@ -3,20 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package estructurasdedatos.estructuraobjeto;
+package estructurasdedatos.array;
 
 /**
  *
  * @author JersonJr
  */
-public class Matriz {
+public class Vector 
+{    
     
     //--Crear vector
     //--Parametro: Tamaño del vector a crear
     
-    public boolean createVector(int sizeX, int sizeY)
+    public boolean createVector(int size)
     {
-        String[][] vector = new String[sizeX][sizeY];        
+        String[] vector = new String[size];        
         return true;
     }
     
@@ -25,20 +26,16 @@ public class Matriz {
     //--Retorna entero de la posición del vector
     //--Parametros: Vector, Cadena a buscar
     
-    public int searchData(String[][] vector, String dato)
+    public int searchData(String[] vector, String dato)
     {
         int position = 0;
         
         for(int i = 0; i <= vector.length; i++)
         {
-            for(int j = 0; j < vector[i].length; i++)
+            if(vector[i] == null ? dato == null : vector[i].equals(dato))
             {
-                if(vector[j] == null ? dato == null : vector[j].equals(dato))
-                {
-                    position = j;
-                }
+                position = i;
             }
-            
         }
         
         return position;
@@ -87,7 +84,7 @@ public class Matriz {
         
         for(int i = 0; i <= vector.length; i++)
         {
-            if(vector[i] == dato)
+            if(vector[i] == null ? dato == null : vector[i].equals(dato))
             {
                 vector[i] = null;
                 complete = true;

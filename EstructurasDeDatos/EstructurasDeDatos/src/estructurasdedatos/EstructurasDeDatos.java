@@ -7,6 +7,8 @@ package estructurasdedatos;
 
 import estructurasdedatos.estructuraobjeto.Persona;
 import estructurasdedatos.estructuraobjeto.Vehiculo;
+import estructurasdedatos.array.Vector;
+import estructurasdedatos.array.Matriz;
 
 /**
  *
@@ -63,6 +65,13 @@ public class EstructurasDeDatos {
         System.out.println("Modelo vehículo: " + automovil.getModelo());
         System.out.println("Número de Soat: " + automovil.getNumeroSoat());
         System.out.println("Placa: : " + automovil.getPlaca());
+        
+        
+        //--Clase vector 
+        
+        Vector vec = new Vector();
+        
+        System.out.print((boolean) vec.createVector(20));
         
     }
     

@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package estructurasdedatos.estructuraobjeto;
+package estructurasdedatos.array;
 
 /**
  *
  * @author JersonJr
  */
-public class Vector 
-{    
+public class Matriz {
+    
     //--Crear vector
     //--Parametro: Tamaño del vector a crear
     
-    public boolean createVector(int size)
+    public boolean createVector(int sizeX, int sizeY)
     {
-        String[] vector = new String[size];        
+        String[][] vector = new String[sizeX][sizeY];        
         return true;
     }
     
@@ -25,16 +25,20 @@ public class Vector
     //--Retorna entero de la posición del vector
     //--Parametros: Vector, Cadena a buscar
     
-    public int searchData(String[] vector, String dato)
+    public int searchData(String[][] vector, String dato)
     {
         int position = 0;
         
         for(int i = 0; i <= vector.length; i++)
         {
-            if(vector[i] == null ? dato == null : vector[i].equals(dato))
+            for(int j = 0; j < vector[i].length; i++)
             {
-                position = i;
+                if(vector[j] == null ? dato == null : vector[j].equals(dato))
+                {
+                    position = j;
+                }
             }
+            
         }
         
         return position;
