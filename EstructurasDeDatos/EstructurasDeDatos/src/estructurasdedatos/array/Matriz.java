@@ -9,33 +9,43 @@ package estructurasdedatos.array;
  *
  * @author JersonJr
  */
-public class Matriz {
+public class Matriz 
+{
     
-    //--Crear vector
-    //--Parametro: Tamaño del vector a crear
+    //--Crear matriz con sus respectivas medidas
     
-    public boolean createVector(int sizeX, int sizeY)
+    private int sizeX = 10;
+    private int sizeY = 5;
+    
+    String[][] matriz = new String[sizeX][sizeY];     
+    
+    
+
+    //--Crear matriz
+    //--Parametro: Tamaño de la matriz a crear
+    
+    public boolean createMatriz(int sizeX, int sizeY)
     {
-        String[][] vector = new String[sizeX][sizeY];        
+        this.matriz = new String[sizeX][sizeY];        
         return true;
     }
     
     
-    //--Buscar datos en el vector
-    //--Retorna entero de la posición del vector
-    //--Parametros: Vector, Cadena a buscar
+    //--Buscar datos en la matriz
+    //--Retorna entero de la posición de la matriz
+    //--Parametros:Cadena a buscar
     
-    public int searchData(String[][] vector, String dato)
+    public int[][] searchData(String dato)
     {
-        int position = 0;
+        int[][] position = null;
         
-        for(int i = 0; i <= vector.length; i++)
+        for(int i = 0; i <= this.sizeX; i++)
         {
-            for(int j = 0; j < vector[i].length; i++)
+            for(int j = 0; j < this.sizeY; i++)
             {
-                if(vector[j] == null ? dato == null : vector[j].equals(dato))
+                if(this.matriz[i][j] == null ? dato == null : this.matriz[i][j].equals(dato))
                 {
-                    position = j;
+                    position = new int [i][j];
                 }
             }
             
@@ -45,36 +55,38 @@ public class Matriz {
     }    
     
     
-    //--Imprime el vector en consola
-    //--Parametro: Vector
     
-    public void printVector(String[] vector)
+    //--Imprime el vector en consola
+    //--Parametro:
+    
+    public void printVector()
     {
-        for(int i = 0; i <= vector.length; i++)
+        for(int i = 0; i <= this.sizeX; i++)
         {
-            System.out.printf(vector[i] + " \n");
+            for(int j = 0; j <= this.sizeY; i++)
+            {
+                System.out.printf(this.matriz[i][j] + " \n");
+            }            
         }
     }
     
     //--Insertar dato en el vector
     //--Parametro: Vector, Cadena con dato a ingresar, posicion en la cual se insertara la cadena
     
-    public boolean insertVector(String[] vector, String dato, int position)
-    {
-        if(position <= vector.length)
+    public boolean insertVector(String dato, int positionX, int positionY)
+    {   
+        boolean complete = false;
+        
+        if(positionX >= 0 && positionX < sizeX)
         {
-            for(int i = 0; i <= vector.length; i++)
+            if(positionY >= 0 && positionY < sizeY)
             {
-                if(vector[i] == Integer.toString(position))
-                {
-                    vector[i] = dato;
-                }
-            }                
-            return true;
-            
-        }else{
-            return false;
+                matriz[positionX][positionY] = dato;
+                complete = true;
+            }
         }
+        
+        return complete;
     }
     
     //--Eliminar dato del vector
@@ -85,12 +97,15 @@ public class Matriz {
     {   
         boolean complete = false;
         
-        for(int i = 0; i <= vector.length; i++)
+        for(int i = 0; i <= this.sizeX; i++)
         {
-            if(vector[i] == dato)
+            for(int j = 0; j<= this.sizeY; j++)
             {
-                vector[i] = null;
-                complete = true;
+                if(matriz[i][j] == null ? dato == null : matriz[i][j].equals(dato))
+                {
+                    matriz[i][j] = null;
+                    complete = true;
+                }
             }
         }
         
@@ -99,29 +114,38 @@ public class Matriz {
     
     
     //--Eliminar dato del vector
-    //--Parametros: Vector, posición del vector a eliminar
+    //--Parametros: Posición del vector a eliminar
     
-    public boolean deleteDataInt(String[] vector, int position)
+    public boolean deleteDataInt(int positionX, int positionY)
     {   
-        if(position <= vector.length)
+        boolean complete = false;
+        
+        if(positionX >= 0 && positionX < sizeX)
         {
-            vector[position] = null;
-            return true;
+            if(positionY >= 0 && positionY < sizeY)
+            {
+                matriz[positionX][positionY] = null;
+                complete = true;
+            }            
         }
-        else
-        {
-            return false;
-        }
-    
+
+        return complete;
     }
           
     //--Eliminar todo el vector
     //--Parametros: Vector
     
-    public boolean deleteAll(String[] vector)
+    public boolean deleteAll()
     {   
-        vector = null;
-        return true;
+        if(this.matriz != null)
+        {
+            this.matriz = null;
+            return true;
+        }else
+        {
+            return false;
+        }
+        
     }
     
 }

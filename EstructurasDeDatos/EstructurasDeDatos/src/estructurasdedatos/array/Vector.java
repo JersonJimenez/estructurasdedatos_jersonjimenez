@@ -10,29 +10,39 @@ package estructurasdedatos.array;
  * @author JersonJr
  */
 public class Vector 
-{    
+{   
+    int size = 20;
+    String[] vector = new String[size];
+    
     
     //--Crear vector
     //--Parametro: Tamaño del vector a crear
     
     public boolean createVector(int size)
     {
-        String[] vector = new String[size];        
-        return true;
+        boolean complete = false;
+        
+        if(this.vector == null)
+        {
+            this.vector = new String[size];  
+            complete = true;
+        }
+     
+        return complete;
     }
     
     
     //--Buscar datos en el vector
     //--Retorna entero de la posición del vector
-    //--Parametros: Vector, Cadena a buscar
+    //--Parametros: Cadena a buscar
     
-    public int searchData(String[] vector, String dato)
+    public int searchData(String dato)
     {
         int position = 0;
         
-        for(int i = 0; i <= vector.length; i++)
+        for(int i = 0; i < this.size; i++)
         {
-            if(vector[i] == null ? dato == null : vector[i].equals(dato))
+            if(this.vector[i] == null ? dato == null : this.vector[i].equals(dato))
             {
                 position = i;
             }
@@ -42,47 +52,43 @@ public class Vector
     }    
     
     
-    //--Imprime el vector en consola
-    //--Parametro: Vector
+    //--Imprime el vector en consola    
     
-    public void printVector(String[] vector)
+    public void printVector()
     {
-        for(int i = 0; i <= vector.length; i++)
+        for(int i = 0; i < this.size; i++)
         {
             System.out.printf(vector[i] + " \n");
         }
     }
     
     //--Insertar dato en el vector
-    //--Parametro: Vector, Cadena con dato a ingresar, posicion en la cual se insertara la cadena
+    //--Parametro: Cadena con dato a ingresar, posicion en la cual se insertara la cadena
     
-    public boolean insertVector(String[] vector, String dato, int position)
+    public boolean insertVector(String dato, int position)
     {
-        if(position <= vector.length)
+        boolean complete = false;
+        
+        if(position > 0 && position <= this.size)
         {
-            for(int i = 0; i <= vector.length; i++)
             {
-                if(vector[i] == Integer.toString(position))
-                {
-                    vector[i] = dato;
-                }
+                this.vector[position] = dato;                   
+                complete = true;
             }                
-            return true;
-            
-        }else{
-            return false;
         }
+        
+        return complete;
     }
     
     //--Eliminar dato del vector
-    //--Parametros: Vector, cadena con dato a eliminar
+    //--Parametros: cadena con dato a eliminar
     //--Retorna boleano
     
-    public boolean deleteData(String[] vector, String dato)
+    public boolean deleteData(String dato)
     {   
         boolean complete = false;
         
-        for(int i = 0; i <= vector.length; i++)
+        for(int i = 0; i < this.size; i++)
         {
             if(vector[i] == null ? dato == null : vector[i].equals(dato))
             {
@@ -98,9 +104,9 @@ public class Vector
     //--Eliminar dato del vector
     //--Parametros: Vector, posición del vector a eliminar
     
-    public boolean deleteDataInt(String[] vector, int position)
+    public boolean deleteDataInt(int position)
     {   
-        if(position <= vector.length)
+        if(position > 0 && position <= this.size)
         {
             vector[position] = null;
             return true;
@@ -113,12 +119,18 @@ public class Vector
     }
           
     //--Eliminar todo el vector
-    //--Parametros: Vector
+    //--Parametros: 
     
-    public boolean deleteAll(String[] vector)
+    public boolean deleteAll()
     {   
-        vector = null;
-        return true;
+        if(this.vector != null)
+        {
+            this.vector = null;
+            return true;
+        }else
+        {
+            return false;
+        }
     }
     
 }

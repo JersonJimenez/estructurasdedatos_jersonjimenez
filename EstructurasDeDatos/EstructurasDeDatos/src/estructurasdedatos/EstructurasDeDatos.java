@@ -8,7 +8,7 @@ package estructurasdedatos;
 import estructurasdedatos.estructuraobjeto.Persona;
 import estructurasdedatos.estructuraobjeto.Vehiculo;
 import estructurasdedatos.array.Vector;
-import estructurasdedatos.array.Matriz;
+//import estructurasdedatos.array.Matriz;
 
 /**
  *
@@ -71,8 +71,46 @@ public class EstructurasDeDatos {
         
         Vector vec = new Vector();
         
-        System.out.print((boolean) vec.createVector(20));
         
+        //--Crear vector con un tamaño definido
+        
+        if(vec.createVector(20)){
+            System.out.print("Vector creado correctamente \n");
+        }else{
+            System.out.print("No se pudo crear el vector, el vector ya existe \n");
+        }
+        
+        //--Insertar un dato en el vector
+        
+        if(vec.insertVector("Colombia", 5))
+        {
+            vec.insertVector("Argentina", 1);
+            vec.insertVector("Brasil", 4);
+            vec.insertVector("Uruguay", 8);
+            vec.insertVector("Chile", 10);
+            vec.insertVector("Panamá", 2);
+            vec.insertVector("México", 6);
+            
+            System.out.print("Registro insertado correctamente \n");
+        }else{
+            System.out.print("No se pudieron insertar datos \n");
+        }
+        
+        //--Buscar dato en el vector
+        System.out.print("Registro encontrado en la posición: "+ (int) vec.searchData("Colombia")+ "\n");
+        
+        
+        //--Mostrar todo el vector
+        
+        vec.printVector();
+        
+        //--Eliminar vector
+        
+        /*if(vec.deleteAll())
+        {
+            System.out.print("Vector eliminado correctamente \n");
+        }
+        */
     }
     
 
