@@ -8,12 +8,15 @@ package estructurasdedatos;
 import estructurasdedatos.estructuraobjeto.Persona;
 import estructurasdedatos.estructuraobjeto.Vehiculo;
 import estructurasdedatos.array.Vector;
-//import estructurasdedatos.array.Matriz;
+import estructurasdedatos.array.Matriz;
+import estructurasdedatos.array.TransponerMatriz;
+import estructurasdedatos.array.MultiplicarMatriz;
 
 /**
  *
  * @author utp
  */
+
 public class EstructurasDeDatos {
 
     /**
@@ -23,7 +26,7 @@ public class EstructurasDeDatos {
         
         //--Clase Persona
         
-        System.out.println("----Clase Persona-----");
+        System.out.println("----Clase Persona----- \n");
         
         Persona estudiante = new Persona();
 
@@ -49,7 +52,7 @@ public class EstructurasDeDatos {
         
         //--Clase Vehiculo
         
-        System.out.println("----Clase Vehiculo-----");
+        System.out.println("----Clase Vehiculo----- \n");
         
         Vehiculo automovil = new Vehiculo();
         
@@ -69,12 +72,13 @@ public class EstructurasDeDatos {
         
         //--Clase vector 
         
+        System.out.println("----Clase Vector----- \n");
         Vector vec = new Vector();
         
         
         //--Crear vector con un tamaño definido
         
-        if(vec.createVector(20)){
+        if(vec.createVector(10)){
             System.out.print("Vector creado correctamente \n");
         }else{
             System.out.print("No se pudo crear el vector, el vector ya existe \n");
@@ -87,7 +91,7 @@ public class EstructurasDeDatos {
             vec.insertVector("Argentina", 1);
             vec.insertVector("Brasil", 4);
             vec.insertVector("Uruguay", 8);
-            vec.insertVector("Chile", 10);
+            vec.insertVector("Chile", 9);
             vec.insertVector("Panamá", 2);
             vec.insertVector("México", 6);
             
@@ -100,17 +104,71 @@ public class EstructurasDeDatos {
         System.out.print("Registro encontrado en la posición: "+ (int) vec.searchData("Colombia")+ "\n");
         
         
-        //--Mostrar todo el vector
-        
+        //--Mostrar todo el vector        
         vec.printVector();
         
         //--Eliminar vector
         
-        /*if(vec.deleteAll())
-        {
+        if(vec.deleteAll()){
             System.out.print("Vector eliminado correctamente \n");
         }
-        */
+        
+        
+        //--Clase Matriz 
+        
+        System.out.println("----Clase Matriz----- \n");
+        Matriz matriz = new Matriz();
+        
+        
+        //--Crear matriz con un tamaño definido
+        
+        int[][] matrizA = matriz.createMatriz(2, 2);
+        
+        //--Insertar datos en la matriz
+        
+        matrizA = matriz.insertMatriz(matrizA);        
+
+        
+        //--Buscar dato en el vector
+        System.out.print("Registro encontrado en la posición: "+ (int[][]) matriz.searchData(2, matrizA) + "\n");
+        
+        
+        //--Mostrar toda la matriz        
+        matriz.printMatriz(matrizA);
+        
+        //--Eliminar matriz
+        
+        if(matriz.deleteAll(matrizA)){
+            System.out.print("Matriz eliminada correctamente \n");
+        }
+        
+        
+        //--Transponer matriz
+        
+        System.out.println("----Clase Transponer-----");
+        TransponerMatriz transponer = new TransponerMatriz();
+        int[][] matrizB = matriz.createMatriz(2, 2);
+        transponer.transponer(matrizA, matrizB);
+        
+        
+        //--Multiplicar matriz
+        System.out.println("----Clase Multiplicar-----");
+        System.out.println("----Llene las listas a multiplicar-----");
+        
+        MultiplicarMatriz multiplicar = new MultiplicarMatriz();
+        
+        int[][] matrizC = matriz.createMatriz(2, 2);
+        int[][] matrizD = matriz.createMatriz(2, 2);
+    int[][] matrizE = matriz.createMatriz(2, 2);
+        
+        matrizC = matriz.insertMatriz(matrizC);
+        matrizC = matriz.insertMatriz(matrizD);        
+        
+        multiplicar.multiplicar(matrizC, matrizD, matrizE);
+        
+        
+        
+        
     }
     
 

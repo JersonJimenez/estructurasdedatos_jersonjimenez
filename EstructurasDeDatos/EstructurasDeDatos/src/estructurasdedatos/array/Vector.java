@@ -9,6 +9,7 @@ package estructurasdedatos.array;
  *
  * @author JersonJr
  */
+
 public class Vector 
 {   
     int size = 20;
@@ -26,6 +27,11 @@ public class Vector
         {
             this.vector = new String[size];  
             complete = true;
+        }else
+        {
+            this.vector = new String[size];  
+            this.size = size;
+            complete = false;
         }
      
         return complete;
@@ -69,7 +75,7 @@ public class Vector
     {
         boolean complete = false;
         
-        if(position > 0 && position <= this.size)
+        if(position > 0 && position < this.size)
         {
             {
                 this.vector[position] = dato;                   
